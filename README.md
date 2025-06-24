@@ -1,54 +1,30 @@
-# 3.3 Geospatial Data API Project
+# Character API with MongoDB
 
-# Description
+This project sets up an Express API connect to MongoDB that allows:
 
-This Node.js application integrates a public geospatial API with MongoDB to fetch, store, retrieve geographic data based on user-provided coordinates. It uses Express for routing and Mongoose to manage data in MongoDB.
+- Seeding test character data (`POST /seed`)
+- Filtering, sorting, and paginating character data (`GET /`)
 
-# How to Run the Project
+## Setup
 
-- Clone your repository
-- git clone https://github./yourusername/your-repo-name
-- cd your repo name
+1. Clone the repo or download the zip
+2. Run `npm install`
+3. Set up .env file with your local Mongo URI:
+   ex: MONGO_URI=mongodb://127.0.0.1:27017/apiquery
+   PORT=3000
 
-# Install Dependencies:
+## Routes
 
-- npm install
+- **POST /seed** - Seeds test data
+- **GET /** optional query parameters:
+  - `minAge`, `maxAge`
+  - `sortOrder`, `order`
+  - `page`, `limit`
 
-# Set up Environment Variables
+## Example
 
-- create a .env file in the root folder
+`GET /?minAge=20&sortBy=age&order=desc&page=1&1limit=2`
 
-# Start the Server
+## Author
 
-- node server.js
-
-# API Routes
-
-GET /api/geo-data?lat={latitude}&lon={longitude}
-.Fetches geospatial data from the external API based on coordinates
-
-.Returns the response directly to the client
-
-POST /api/geo-data
-. Accepts a geospatial data object in the request body.
-. Saves it to MongoDB and returns the document's ID.
-
-GET /api/geo-data
-.Returns all saved geospatial data from MongoDB
-
-GET /api/geo-data/:id
-. Retrieves a specific document from MongoDB using its ID
-
-# Technologies used
-
-. Node.js
-. Express
-. MongoDB & Mongoose
-. dotenv
-. node-fetch
-
-# API used
-
-OpenWeatherMap
-.Endpoint https://api.openweathermap.org/data/2.5/weather
-.API key required (free tier available)
+Jennifer Gil
